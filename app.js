@@ -63,3 +63,22 @@ const galleryItems = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
+
+const a = document.querySelector('.lightbox__button');
+const b = document.querySelector('.lightbox_open')
+console.log(a);
+console.log(b);
+
+//b.classList.add('is-open');
+
+a.addEventListener('click', removeClass)
+b.addEventListener('click', addClass)
+
+function removeClass() {
+  a.classList.add('is-open');
+};
+
+function addClass() {
+  a.classList.remove('is-open');
+}
