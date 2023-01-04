@@ -65,20 +65,66 @@ const galleryItems = [
 ];
 
 
-const a = document.querySelector('.lightbox__button');
-const b = document.querySelector('.lightbox_open')
-console.log(a);
-console.log(b);
+const galleryContainer = document.querySelector(".js-gallery");
+const cardsMarkup = createGalleryMarkup(galleryItems);
 
-//b.classList.add('is-open');
+galleryContainer.insertAdjacentHTML("beforeend", cardsMarkup);
 
-a.addEventListener('click', removeClass)
-b.addEventListener('click', addClass)
+// galleryContainer.addEventListener("click", onPalletteContainerClick);
 
-function removeClass() {
-  a.classList.add('is-open');
+function createGalleryMarkup(colors) {
+  return colors
+    .map(({ preview, original }) => {
+      return `
+    <li class="gallery__item">
+      <a class="gallery__link" href="${original}">
+      <img
+        class="gallery__image"
+        src="${preview}"
+        data-source="${preview}"
+        alt=""/>
+      </a>
+  </li>`;
+    }).join("");
 };
 
-function addClass() {
-  a.classList.remove('is-open');
-}
+// function onPalletteContainerClick(e) {
+//   const isColorSwatchEl = e.target.classList.contains("color-swatch");
+//   if (!isColorSwatchEl) {
+//     return;
+//   }
+
+//   removeActivCardClass();
+//   // const currentActiveCard = document.querySelector(".color-card.is-active");
+
+//   // if (currentActiveCard) {
+//   //   currentActiveCard.classList.remove("is-active");
+//   // }
+
+//   const swatchEl = e.target;
+//   const parentColorCard = swatchEl.closest(".color-card");
+
+//   addActiveCardClass(parentColorCard);
+//   // parentColorCard.classList.add("is-active");
+
+//   setBodyBgColor(swatchEl.dataset.hex);
+//   // document.body.style.backgroundColor = e.target.dataset.hex;
+
+//   console.log(e.target.dataset.hex);
+// }
+
+// function setBodyBgColor(color) {
+//   document.body.style.backgroundColor = color;
+// }
+
+// function removeActivCardClass() {
+//   const currentActiveCard = document.querySelector(".color-card.is-active");
+
+//   if (currentActiveCard) {
+//     currentActiveCard.classList.remove("is-active");
+//   }
+// }
+
+// function addActiveCardClass(card) {
+//   card.classList.add("is-active");
+// };
