@@ -85,8 +85,9 @@ const refs = {
 const cardsMarkup = createGalleryMarkup(galleryItems);
 
 refs.body.addEventListener('click', clickBody);
+refs.closeModalBtn.addEventListener("click", closeModal);
+
 refs.galleryContainer.insertAdjacentHTML("beforeend", cardsMarkup);
-refs.closeModalBtn.addEventListener('click', closeModal);
 
 function clickBody(evt) {
   evt.preventDefault();
