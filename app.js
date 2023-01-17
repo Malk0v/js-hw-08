@@ -75,17 +75,17 @@ const galleryItems = [
 
 const refs = {
   modalWindow: document.querySelector(".lightbox"),
-  body: document.querySelector('body'),
+  body: document.querySelector("body"),
   galleryContainer: document.querySelector(".js-gallery"),
   imageContainer: document.querySelector(".lightbox__content"),
-  closeModalBtn: document.querySelector("[data-action=close-lightbox]"),
-  deleteImg: document.querySelector('.lightbox__image'),
+  closeModalBtn: document.querySelector(".lightbox__button"),
+  deleteImg: document.querySelector(".lightbox__image"),
 };
 
 const cardsMarkup = createGalleryMarkup(galleryItems);
 
 refs.body.addEventListener('click', clickBody);
-refs.closeModalBtn.addEventListener("click", closeModal);
+refs.closeModalBtn.addEventListener('click', onCloseModal);
 
 refs.galleryContainer.insertAdjacentHTML("beforeend", cardsMarkup);
 
@@ -111,8 +111,10 @@ function createModalImg(link) {
   return `<img class="lightbox__image"src="${link}"/>`;
 };
 
-function closeModal() {
-  console.log('+'); 
+function onCloseModal(evt) {
+  if (evt.target.nodeName !== "BUTTON") {
+    return;
+  }
   refs.modalWindow.classList.toggle("is-open");
   refs.imageContainer.innerHTML = "";
 }
